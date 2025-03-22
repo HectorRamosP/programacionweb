@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Encabezado */
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Barra de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background: #444;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 25%;
+    background: #ddd;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 8px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background: #ccc;
+}
+
+/* Contenido principal */
+main {
+    width: 75%;
+    padding: 20px;
+    background: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de artículos */
+article {
+    background: #fafafa;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 5px solid #444;
+}
+
+article h3 {
+    margin: 0 0 10px;
+}
+
+/* Pie de página */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
