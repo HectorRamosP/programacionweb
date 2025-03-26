@@ -1,5 +1,6 @@
 import React from "react";
 import './main.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Main() {
   return (
@@ -33,7 +34,7 @@ function Main() {
           <section>
             <h2>Artículos Destacados</h2>
             <article>
-              <h3>Artículo 1</h3>
+              <h3 className="text-primary">Artículo 1</h3>
               <p>Descripción breve del artículo 1.</p>
             </article>
             <article>
