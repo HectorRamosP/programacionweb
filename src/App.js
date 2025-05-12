@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import ImageComponent from "./components/ImageComponent";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
