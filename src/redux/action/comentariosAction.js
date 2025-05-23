@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "https://api.example.com/usuarios";
+const API_URL = "https://api.example.com/comentarios";
 
-
-export const listarUsuarios = createAsyncThunk(
-  "usuarios/listarUsuarios",
+// GET
+export const listarComentarios = createAsyncThunk(
+  "comentarios/listarComentarios",
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(API_URL);
@@ -16,12 +16,12 @@ export const listarUsuarios = createAsyncThunk(
   }
 );
 
-
-export const crearUsuario = createAsyncThunk(
-  "usuarios/crearUsuario",
-  async (usuarioData, { rejectWithValue }) => {
+// POST
+export const crearComentario = createAsyncThunk(
+  "comentarios/crearComentario",
+  async (comentarioData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(API_URL, usuarioData);
+      const response = await axios.post(API_URL, comentarioData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -29,9 +29,9 @@ export const crearUsuario = createAsyncThunk(
   }
 );
 
-
-export const actualizarUsuario = createAsyncThunk(
-  "usuarios/actualizarUsuario",
+// PUT
+export const actualizarComentario = createAsyncThunk(
+  "comentarios/actualizarComentario",
   async ({ id, data }, { rejectWithValue }) => {
     try {
       const response = await axios.put(`${API_URL}/${id}`, data);
@@ -42,9 +42,9 @@ export const actualizarUsuario = createAsyncThunk(
   }
 );
 
-
-export const patchUsuario = createAsyncThunk(
-  "usuarios/patchUsuario",
+// PATCH
+export const patchComentario = createAsyncThunk(
+  "comentarios/patchComentario",
   async ({ id, data }, { rejectWithValue }) => {
     try {
       const response = await axios.patch(`${API_URL}/${id}`, data);
@@ -54,3 +54,5 @@ export const patchUsuario = createAsyncThunk(
     }
   }
 );
+
+
