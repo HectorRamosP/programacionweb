@@ -6,7 +6,7 @@ import './App.css';
 // Componentes de páginas
 import Home from './pages/Home';
 import CrearUsuario from './pages/CrearUsuario';
-// import Contacto from './pages/Contacto';
+import Contacto from "./pages/Contacto"
 import CrearEvento from './pages/CrearEvento';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/crear-usuario" element={<CrearUsuario />} />
         <Route path="/crear-evento" element={<CrearEvento />} />
-        {/* <Route path="/eventos" element={<Eventos />} />  */}
+        <Route path="/contacto" element={<Contacto />} />
       </Routes>
     </Router>
   );
