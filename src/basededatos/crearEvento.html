@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0 0 !important;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .input-group-text {
+            background-color: #f8f9fa;
+            border-radius: 8px 0 0 8px !important;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        /* Estilo para el input de color */
+        .form-control-color {
+            width: 50px;
+            height: 45px;
+            padding: 2px;
+            border-radius: 8px !important;
+        }
+        
+        /* Previsualización de imagen */
+        #imagenPreview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0"><i class="fas fa-calendar-plus me-2"></i>Crear Nuevo Evento</h3>
+        </div>
+        <div class="card-body">
+          <form id="formCrearEvento" action="guardar-evento.php" method="POST" enctype="multipart/form-data">
+
+            <div class="row g-3">
+              
+              <!-- Nombre del Evento -->
+              <div class="col-md-12">
+                <label for="titulo" class="form-label">Nombre del Evento</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                  <input type="text" class="form-control" id="titulo" name="titulo" required placeholder="Ej: Concierto de Arnoldo">
+                </div>
+              </div>
+              
+              <!-- Fecha y Tipo -->
+              <div class="col-md-6">
+                <label for="fecha" class="form-label">Fecha del Evento</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  <input type="date" class="form-control" id="fecha" name="fecha" required>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="tipo" class="form-label">Tipo de Evento</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                  <select class="form-select" id="tipo" name="tipo" required>
+                    <option value="" disabled selected>Seleccione...</option>
+                    <option value="Concierto">Concierto</option>
+                    <option value="Festival">Festival</option>
+                    <option value="Exposición">Exposición</option>
+                    <option value="Deportivo">Evento Deportivo</option>
+                    <option value="Cultural">Evento Cultural</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- Color y Lugar -->
+              <div class="col-md-6">
+                <label for="color" class="form-label">Color identificador</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-palette"></i></span>
+                  <input type="color" class="form-control form-control-color" id="color" name="color" value="#007bff">
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="lugar" class="form-label">Lugar</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                  <input type="text" class="form-control" id="lugar" name="lugar" required placeholder="Ej: Auditorio Cívico">
+                </div>
+              </div>
+              
+              <!-- Descripción -->
+              <div class="col-12">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Detalles del evento..."></textarea>
+              </div>
+              
+              <!-- Imagen -->
+              <div class="col-12">
+                <label for="imagen" class="form-label">Imagen del Evento</label>
+                <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*">
+                <div class="form-text">Sube una imagen representativa del evento</div>
+              </div>
+              
+              <!-- Botones -->
+              <div class="col-12 mt-4">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="button" class="btn btn-outline-secondary me-md-2" onclick="window.history.back()">
+                    <i class="fas fa-times me-1"></i> Cancelar
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save me-1"></i> Guardar Evento
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // Previsualización de imagen
+document.getElementById('imagen').addEventListener('change', function(e) {
+  const preview = document.getElementById('imagenPreview');
+  const file = e.target.files[0];
+  
+  if (file) {
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      if (!preview) {
+        const previewContainer = document.createElement('div');
+        previewContainer.id = 'imagenPreviewContainer';
+        previewContainer.innerHTML = `
+          <div class="mt-3">
+            <label class="form-label">Vista previa:</label>
+            <img id="imagenPreview" src="${e.target.result}" class="img-thumbnail" style="max-height: 200px;">
+          </div>
+        `;
+        document.querySelector('form').insertBefore(previewContainer, document.querySelector('.col-12.mt-4'));
+      } else {
+        preview.src = e.target.result;
+      }
+    }
+    
+    reader.readAsDataURL(file);
+  }
+});
+
+// Validación del formulario
+document.getElementById('formCrearEvento').addEventListener('submit', function(e) {
+  let isValid = true;
+  
+  // Validar campos requeridos
+  const requiredFields = ['titulo', 'fecha', 'tipo', 'lugar'];
+  requiredFields.forEach(fieldId => {
+    const field = document.getElementById(fieldId);
+    if (!field.value.trim()) {
+      field.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      field.classList.remove('is-invalid');
+    }
+  });
+  
+  if (!isValid) {
+    e.preventDefault();
+    // Mostrar mensaje de error general
+    alert('Por favor complete todos los campos requeridos');
+  }
+});
+</script>
+    
+</body>
+</html>
