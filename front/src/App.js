@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import CrearUsuario from './pages/CrearUsuario';
 import CrearEvento from './pages/CrearEvento';
 import Login from "./pages/Login";
+import Contacto from "./pages/Contacto"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/crear-usuario" element={<CrearUsuario />} />
           <Route path="/crear-evento" element={<CrearEvento />} />
+              <Route path="/contacto" element={<Contacto />} />
             <Route path="/login" element={<Login />} />
         </Routes>
       </div>
